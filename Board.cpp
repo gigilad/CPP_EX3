@@ -1,3 +1,5 @@
+//gilada8892@gmail.com
+
 #include "Board.hpp"
 #include <iostream>
 #include <map>
@@ -58,6 +60,7 @@ namespace ariel
                     Vertex *v4 = getVertex(rowIndex + 2, colIndex + 1);
                     Vertex *v5 = getVertex(rowIndex + 1, colIndex + 1);
                     Vertex *v6 = getVertex(rowIndex, colIndex + 1);
+
                     v1->addResource(land->getResource());
                     v2->addResource(land->getResource());
                     v3->addResource(land->getResource());
@@ -160,7 +163,6 @@ namespace ariel
     // setters
     void Board::setBoard()
     {
-        cout << "lets set the board" << boardLength << endl;
         initSettelments();
         initLands();
     }

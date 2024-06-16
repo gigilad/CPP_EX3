@@ -1,4 +1,5 @@
 
+//gilada8892@gmail.com
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <iostream>
 #include "doctest.h"
@@ -92,29 +93,7 @@ TEST_CASE("checking initialize hex board"){
 
 }
 
-TEST_CASE("Checking placeing roads"){
-    //each Road can be beetwen two hexygons;
-    Player player1("Alice",0);
-    Player player2("Bob",1);
-    Player player3("Charlie",2);
 
-    Catan Catan(player1, player2, player3);
-    Board Board;
-    Catan.setBoard(Board);
-     vector<vector<Land*>>& lands = Catan.getBoard();
-     Board.printBoard();
-     vector<Vertex*>& verticies =Board.getVertices();
-    vector<int> placesNum ={5,6};
-    vector<string> places = {"WOOD" , "BRICK"};
-    player1.placeRoad(places , placesNum , lands);
-    player1.placeSettelment(places , placesNum , lands);
-    vector<int> placesNum1 ={4,9};
-    vector<string> places1 = {"WOOD" , "OATS"};
-    player1.placeRoad(places1 , placesNum1 , lands);
-    player1.placeSettelment(places1 , placesNum1 , lands);
-
-
-}
 TEST_CASE("CHECKING OPERATOR == Beetwen vertices and roads"){
     Vertex v1 = Vertex(2,3);
     Vertex v2 = Vertex(3,5);
@@ -167,8 +146,8 @@ TEST_CASE("Checking trade function"){
     Board Board;
     Catan.setBoard(Board);
     vector<Player*>& players = Catan.getPlayers();
-     vector<vector<Land*>>& lands = Catan.getBoard();
-     Board.printBoard();
+    vector<vector<Land*>>& lands = Catan.getBoard();
+    Board.printBoard();
     player1.addResourceCard(Resource::BRICK);
     player2.addResourceCard(Resource::OATS);
     player2.addResourceCard(Resource::WOOL);
@@ -185,12 +164,12 @@ TEST_CASE("Checking trade function"){
     CHECK(trade4 == 0); // player 1 gave his wool;
 
     player1.endTurn(players);
+    //not his turn
     bool trade6 = player1.tradeResource(player2 , Resource::BRICK,Resource::WOOL); //not player 1 turn anymore;
     CHECK(trade6 ==false);
 
-
-
 }
+
 TEST_CASE("Checking trade function"){
     Player player1("Alice",0);
     Player player2("Bob",1);
@@ -319,6 +298,7 @@ TEST_CASE("testing trade devolepment Cards "){
     CHECK(player2.getDevolopmentCards()[0].name == "buildRoad");
 
     try{
+        //wont work now;
         player1.tradeDevolpmentCards(player2 ,DevelopmentCard("buildRoad"),DevelopmentCard("plentYear"),Catan.getArmyCard());
 
     }catch(std::runtime_error e){
@@ -328,7 +308,7 @@ TEST_CASE("testing trade devolepment Cards "){
 
 }
 
-TEST_CASE("check is player win works"){
+TEST_CASE("check if player win works"){
     Player player1("Alice",0);
     Player player2("Bob",1);
     Player player3("Charlie",2);
@@ -345,11 +325,21 @@ TEST_CASE("check is player win works"){
     player1.endTurn(players);
     player2.endTurn(players);
     player3.endTurn(players);
-
-
-
-
-
-
-
+}
+TEST_CASE("check if dice == 7 works"){
+    Player player1("Alice",0);
+    Player player2("Bob",1);
+    Player player3("Charlie",2);
+    Catan Catan(player1, player2, player3);
+    Board Board;
+    Catan.setBoard(Board);
+    Board.printBoard();
+    vector<Player*>& players = Catan.getPlayers();
+    CHECK(player1.getResourceCards().size()==0);
+    for (size_t i = 0; i < 8; i++)
+    {
+        player1.addResourceCard(Resource::BRICK);
+    }
+    player1.cutResourceCards(players);
+    CHECK(player1.getResourceCards().size()==4);
 }

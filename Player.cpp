@@ -1,3 +1,4 @@
+//gilada8892@gmail.com
 #include "Player.hpp"
 #include "Land.hpp"
 #include <string>
@@ -641,7 +642,7 @@ namespace ariel
     void Player::cutResourceCards(vector<Player*>& players){
         for(Player* player : players){
             if(player->getResourceCards().size() > 7) {
-                std::cout << "cutting plaayer card number " << player->getIndex()+1 << " has " <<player->getResourceCards().size() <<std::endl;
+                std::cout << "cutting player cards by half for player " << player->getIndex()+1 << "  has " <<player->getResourceCards().size() <<std::endl;
                 size_t halfSize = player->getResourceCards().size()/2;
                 player->getResourceCards().erase(player->getResourceCards().begin(), player->getResourceCards().begin() + halfSize);
                 std::cout << "now player number " << player->getIndex()+1 << " has " <<player->getResourceCards().size() <<std::endl;

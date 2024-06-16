@@ -1,3 +1,5 @@
+//gilada8892@gmail.com
+
 #ifndef BOARD_HPP
 #define BOARD_HPP
 #include "Land.hpp"

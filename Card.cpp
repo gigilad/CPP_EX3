@@ -1,3 +1,5 @@
+//gilada8892@gmail.com
+
 #include "Card.hpp"
 using namespace ariel;
 

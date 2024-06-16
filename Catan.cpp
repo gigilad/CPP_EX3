@@ -1,3 +1,5 @@
+//gilada8892@gmail.com
+
 #include "Catan.hpp"
 #include <iostream>
 #include <cstdlib> // for rand() and srand()

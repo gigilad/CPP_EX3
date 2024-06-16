@@ -1,3 +1,4 @@
+# gilada8892@gmail.com
 # Compiler to use
 CXX = g++
 
@@ -5,7 +6,7 @@ CXX = g++
 CXXFLAGS = -Wall -g
 
 # Main target executable
-TARGET = catan
+TARGET = Catan
 
 # Test target executable
 TEST_TARGET = test_catan
@@ -37,3 +38,7 @@ clean:
 
 # Phony targets (targets that are not actual files)
 .PHONY: all clean
+
+# Custom target to build both executables and run catan
+catan: $(TARGET) $(TEST_TARGET)
+	./$(TARGET)

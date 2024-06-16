@@ -1,3 +1,4 @@
+//gilada8892@gmail.com
 #include "Resource.hpp"
 
 std::string resourceToString(Resource type){
